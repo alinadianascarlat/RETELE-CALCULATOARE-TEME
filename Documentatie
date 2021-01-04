@@ -1,0 +1,26 @@
+
+                           DOCUMENTATIE
+
+  server.py
+  ==========
+  Serverul functioneaza astfel:
+1 - deschide un socket la adresa si portul specificate in variabilele "LOCALHOST" si "PORT"
+2 - asculta dupa noi conexiuni 
+3 - cand un client se conecteaza la server porneste un thread nou care sa se ocupe de aceasta conexiune
+4 - revine la punctul 2
+
+  Programul server se va termina atunci cand se inchide fereastra command promt in care este deschis.
+
+  Clasa "ClientThread" extinde "threading.Thread" din Python ca sa implementeze un thread.
+Acest nou thread se va ocupa de cate o singura conexiune cu un client astfel:
+- in constructor (methoda "_init_") retine adresa clientului si socketul pe care o sa comunice cu clientul
+- in metoda "run" se implementeaza logica specificata in problema cat timp clientul este conectat, adica serverul nu primeste un mesaj gol.
+- cand serverul primeste un mesaj gol intrerupe bucla si threadul se termina afisand inainte un mesaj despre clientul care s-a deconectat.
+
+
+
+  client.py
+  ==========
+    Aplicatia client se conecteaza la un server a carui adresa si port sunt specificate in variabilele "SERVER" si "PORT".
+    Dupa conectare, atat timp cat utilizatorul nu a introdus cuvantul "bye", clientul trimite ceea ce a introdus utilizatorul la server si afiseaza raspunsul primit.
+Atunci cand utilizatorul introduce cuvantul "bye" aplicatia se termina si inchide conexiunea cu serverul.
