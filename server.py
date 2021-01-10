@@ -40,7 +40,7 @@ server.bind((LOCALHOST, PORT))
 print("Server pornit si gata de joc")
 
 while True:
-    server.listen(1)
-    clientsock, clientAddress = server.accept()
-    newthread = ClientThread(clientAddress, clientsock)
-    newthread.start()  
+    server.listen() # face ca socketul sa poata asculta dupa conexiuni noi
+    clientsock, clientAddress = server.accept() # asculta dupa noi conexiuni
+    newthread = ClientThread(clientAddress, clientsock) # creeaza un thread nou care sa se ocupe de un client nou
+    newthread.start() # porneste threadul
